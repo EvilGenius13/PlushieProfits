@@ -1,0 +1,14 @@
+<h1>User Dashboard</h1>
+
+<% if @auth_info.present? %>
+  <div>
+    <h2>Welcome, <%= @auth_info['name'] %></h2>
+    <p>Email: <%= @auth_info['email'] || @auth_info['name'] %></p>
+    <p>Nickname: <%= @auth_info['nickname'] %></p>
+    <% if @auth_info['picture'].present? %>
+      <img src="<%= @auth_info['picture'] %>" alt="Profile Picture">
+    <% end %>
+  </div>
+<% else %>
+  <p>No user information available.</p>
+<% end %>
