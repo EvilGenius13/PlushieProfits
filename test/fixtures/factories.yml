@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  max_material_storage: 1
+  max_production_capacity: 1
+  max_plushie_storage: 1
+  max_accessory_storage: 1
+
+two:
+  name: MyString
+  max_material_storage: 1
+  max_production_capacity: 1
+  max_plushie_storage: 1
+  max_accessory_storage: 1

@@ -4,7 +4,9 @@ class DashboardsController < ApplicationController
 
   def show
     @auth_info = session[:userinfo]
-    puts @auth_info['sub']
+    # puts @auth_info['sub']
+    @user = User.find_by(auth_id: @auth_info['sub'])
+    @factory = @user.factory if @user.present?
   end
 
   private

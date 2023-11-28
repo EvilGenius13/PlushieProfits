@@ -1,14 +1,25 @@
 <h1>User Dashboard</h1>
 
-<% if @auth_info.present? %>
-  <div>
-    <h2>Welcome, <%= @auth_info['name'] %></h2>
-    <p>Email: <%= @auth_info['email'] || @auth_info['name'] %></p>
-    <p>Nickname: <%= @auth_info['nickname'] %></p>
-    <% if @auth_info['picture'].present? %>
-      <img src="<%= @auth_info['picture'] %>" alt="Profile Picture">
+<div class="dashboard-container">
+  <% if @user.present? %>
+    <div class="user-profile">
+      <h2>Welcome, <%= @user.username %></h2>
+      <p>Balance: <%= @user.balance %></p>
+      <%= link_to 'Edit Profile', edit_user_path(current_user) %>
+    </div>
+
+    <% if @factory.present? %>
+      <div class="factory-info">
+        <h2>Factory Details</h2>
+        <p>Name: <%= @factory.name %></p>
+        <p>Material Storage: <%= @factory.max_material_storage %></p>
+        <p>Production Capacity: <%= @factory.max_production_capacity %></p>
+        <p>Plushie Storage: <%= @factory.max_plushie_storage %></p>
+      </div>
+    <% else %>
+      <p>No factory information available.</p>
     <% end %>
-  </div>
-<% else %>
-  <p>No user information available.</p>
-<% end %>
+  <% else %>
+    <p>No user information available.</p>
+  <% end %>
+</div>

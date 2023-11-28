@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_22_225652) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_28_210849) do
+  create_table "factories", force: :cascade do |t|
+    t.string "name"
+    t.integer "max_material_storage"
+    t.integer "max_production_capacity"
+    t.integer "max_plushie_storage"
+    t.integer "max_accessory_storage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_factories_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "auth_id"
     t.string "username"
@@ -20,4 +32,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_225652) do
     t.index ["auth_id"], name: "index_users_on_auth_id", unique: true
   end
 
+  add_foreign_key "factories", "users"
 end
